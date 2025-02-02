@@ -27,6 +27,7 @@ class BiaCard extends StatelessWidget {
                             children: [
                                 Icon(
                                     Icons.calendar_today,
+                                    color: Theme.of(context).colorScheme.onSurface,
                                 ),
                                 Text(
                                     bia.formattedTimestamp,
