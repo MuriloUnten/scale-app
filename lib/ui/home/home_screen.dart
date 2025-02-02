@@ -100,6 +100,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                 ),
             ),
+            floatingActionButton: FloatingActionButton.extended(
+                shape: RoundedRectangleBorder(
+                    borderRadius:BorderRadius.all(Radius.circular(20)),
+                ),
+                onPressed: () => context.goNamed("createBia"),
+                icon: Icon(Icons.add),
+                label: Text("Measure"),
+                elevation: 10,
+            ),
             bottomNavigationBar: BottomNavigationBar(
                 items: const <BottomNavigationBarItem>[
                     BottomNavigationBarItem(

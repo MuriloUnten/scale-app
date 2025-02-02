@@ -51,6 +51,7 @@ class _CreateUserState extends State<CreateUser> {
                                 controller: _firstNameController,
                                 decoration: InputDecoration(labelText: 'First Name'),
                                 validator: (value) => value!.isEmpty ? 'Enter first name' : null,
+                                autofocus: true,
                             ),
                             SizedBox(height: 10),
                             TextFormField(
