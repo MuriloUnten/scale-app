@@ -15,6 +15,17 @@ extension SexUtil on Sex {
                 return "undefined";
         }
     }
+    String get formattedString {
+        switch (this) {
+            case Sex.M:
+                return "Male";
+            case Sex.F:
+                return "Female";
+            case Sex.undefined:
+                return "undefined";
+        }
+
+    }
     static Sex fromString(string) {
         switch (string) {
             case "M":

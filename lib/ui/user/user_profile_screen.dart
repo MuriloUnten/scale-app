@@ -1,4 +1,6 @@
+import 'package:flutter_app_test/domain/sex.dart';
 import 'package:flutter_app_test/domain/user.dart';
+import 'package:flutter_app_test/ui/user/user_card.dart';
 import 'package:flutter_app_test/ui/user/user_profile_viewmodel.dart';
 
 import 'package:flutter/material.dart';
@@ -37,7 +39,16 @@ class _UserProfileState extends State<UserProfileScreen> {
     @override
     build(BuildContext context) {
         return Scaffold(
-            appBar: AppBar(),
+            appBar: AppBar(
+                leading: BackButton(
+                    onPressed: () => context.goNamed("home"),
+                ),
+                title: Text(
+                    "Profile",
+                    style: Theme.of(context).textTheme.titleLarge,
+                ),
+                centerTitle: true,
+            ),
             body: SafeArea(
                 child: CommandBuilder<void, Result<User>>(
                     command: widget.viewModel.load,
@@ -59,24 +70,17 @@ class _UserProfileState extends State<UserProfileScreen> {
                             context.goNamed("createUser");
                         }
 
-                        return Column(
-                            children: [
-                                Text(
-                                    widget.viewModel.user!.fullName,
-                                ),
-                                Text(
-                                    formatDate(widget.viewModel.user!.dateOfBirth),
-                                ),
-                                Text(
-                                    "${widget.viewModel.user!.height} cm",
-                                ),
-                                Text(
-                                    widget.viewModel.user!.height.toString(),
-                                ),
-                            ],
-                        );
+                        return UserCard(user: widget.viewModel.user!);
                     },
                 ),
+            ),
+            floatingActionButton: FloatingActionButton.extended(
+                onPressed: () => context.goNamed("editUser"),
+                shape: RoundedRectangleBorder(
+                    borderRadius:BorderRadius.all(Radius.circular(20)),
+                ),
+                icon: Icon(Icons.edit),
+                label: Text("Edit"),
             ),
         );
     }
