@@ -347,6 +347,7 @@ class SQLiteStorage {
                 ],
                 where: "${biaTable.userId} = ?",
                 whereArgs: [ userId ],
+                orderBy: "${biaTable.timestamp} DESC",
             );
 
             List<BiaSQLiteModel> bias = [];

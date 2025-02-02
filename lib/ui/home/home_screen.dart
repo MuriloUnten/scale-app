@@ -38,7 +38,19 @@ class _HomeScreenState extends State<HomeScreen> {
     @override
     build(BuildContext context) {
         return Scaffold(
-            appBar: AppBar(),
+            appBar: AppBar(
+                title: Text(
+                    "Home",
+                    style: Theme.of(context).textTheme.titleLarge,
+                ),
+                centerTitle: true,
+                actions: [
+                    IconButton(
+                        onPressed: () => context.goNamed("user"),
+                        icon: Icon(Icons.account_circle)
+                    ),
+                ],
+            ),
             body: SafeArea(
                 top: true,
                 bottom: true,
@@ -60,41 +72,25 @@ class _HomeScreenState extends State<HomeScreen> {
                     onData: (context, data, _) {
                         return Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            spacing: 15,
+                            spacing: 10,
                             children: [
                                 Container(
                                     padding: EdgeInsets.only(left: 35),
                                     child: Text(
-                                        "Last Measurements",
-                                        style: Theme.of(context).textTheme.headlineLarge,
+                                        "Hello, ${widget.viewModel.user!.firstName}!",
+                                        style: Theme.of(context).textTheme.titleLarge,
                                         textAlign: TextAlign.left,
                                     ),
                                 ),
-                                BiasList(
-                                    bias: [
-                                        Bia(
-                                            timestamp: DateTime.now(),
-                                            weight: 70.4,
-                                            muscleMass: 32.6,
-                                            fatMass: 20.4,
-                                            waterMass: 7.4,
-                                        ),
-                                        Bia(
-                                            timestamp: DateTime.now(),
-                                            weight: 70.4,
-                                            muscleMass: 32.6,
-                                            fatMass: 20.4,
-                                            waterMass: 7.4,
-                                        ),
-                                        Bia(
-                                            timestamp: DateTime.now(),
-                                            weight: 70.4,
-                                            muscleMass: 32.6,
-                                            fatMass: 20.4,
-                                            waterMass: 7.4,
-                                        ),
-                                    ],
+                                Container(
+                                    padding: EdgeInsets.only(left: 35),
+                                    child: Text(
+                                        "Last Measurements",
+                                        style: Theme.of(context).textTheme.headlineMedium,
+                                        textAlign: TextAlign.left,
+                                    ),
                                 ),
+                                BiasList(bias: widget.viewModel.recentBias),
                             ],
                         );
                     },

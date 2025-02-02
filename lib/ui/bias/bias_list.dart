@@ -13,6 +13,19 @@ class BiasList extends StatelessWidget {
 
     @override
     Widget build(BuildContext context) {
+        if (bias.isEmpty) {
+            return Padding(
+                padding: EdgeInsets.symmetric(
+                    vertical: 10,
+                    horizontal: 35,
+                ),
+                child: Text(
+                    "No measurements yet...",
+                    style: Theme.of(context).textTheme.bodyLarge,
+                ),
+            );
+        }
+
         return Container(
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: Center(

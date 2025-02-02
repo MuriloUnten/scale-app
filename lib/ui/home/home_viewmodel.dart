@@ -28,7 +28,7 @@ class HomeViewmodel extends ChangeNotifier {
     User? get user => _user;
 
     List<Bia> _recentBias = [];
-    UnmodifiableListView<Bia> get recentBias => UnmodifiableListView(_recentBias);
+    UnmodifiableListView<Bia> get recentBias => UnmodifiableListView(_recentBias.take(3));
 
     Future<Result<void>> _load() async {
         print("insinde _load");

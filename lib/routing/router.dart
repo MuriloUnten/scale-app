@@ -3,6 +3,8 @@ import "package:flutter_app_test/ui/home/home_screen.dart";
 import "package:flutter_app_test/ui/home/home_viewmodel.dart";
 import "package:flutter_app_test/ui/user/create_user_screen.dart";
 import "package:flutter_app_test/ui/user/create_user_viewmodel.dart";
+import "package:flutter_app_test/ui/user/user_profile_screen.dart";
+import "package:flutter_app_test/ui/user/user_profile_viewmodel.dart";
 import "package:flutter_app_test/utils/result.dart";
 
 import "package:go_router/go_router.dart";
@@ -30,7 +32,15 @@ GoRouter router() => GoRouter(
                 final viewModel = CreateUserViewmodel(userRepository: context.read());
                 return CreateUser(viewModel: viewModel);
             }
-        )
+        ),
+        GoRoute(
+            name: "user",
+            path: "/user",
+            builder: (context, state) {
+                final viewModel = UserProfileViewmodel(userRepository: context.read());
+                return UserProfileScreen(viewModel: viewModel);
+            },
+        ),
 
     ],
     redirect: (context, state) async {
