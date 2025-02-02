@@ -1,7 +1,7 @@
-import 'package:flutter_app_test/domain/bia.dart';
-import 'package:flutter_app_test/ui/home/home_viewmodel.dart';
-import 'package:flutter_app_test/utils/result.dart';
-import "package:flutter_app_test/ui/bias/bias_list.dart";
+import 'package:scale_app/domain/bia.dart';
+import 'package:scale_app/ui/home/home_viewmodel.dart';
+import 'package:scale_app/utils/result.dart';
+import "package:scale_app/ui/bias/bias_list.dart";
 
 import 'package:flutter_command/flutter_command.dart';
 import 'package:flutter/material.dart';

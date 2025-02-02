@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_test/data/services/models/user_sqlite_model.dart';
-import 'package:flutter_app_test/data/services/models/bia_sqlite_model.dart';
-import 'package:flutter_app_test/data/services/tables.dart';
-import 'package:flutter_app_test/utils/result.dart';
+import 'package:scale_app/data/services/models/user_sqlite_model.dart';
+import 'package:scale_app/data/services/models/bia_sqlite_model.dart';
+import 'package:scale_app/data/services/tables.dart';
+import 'package:scale_app/utils/result.dart';
 
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';

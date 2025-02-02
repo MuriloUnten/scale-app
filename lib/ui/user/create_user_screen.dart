@@ -1,8 +1,8 @@
-import 'package:flutter_app_test/ui/user/create_user_viewmodel.dart';
-import "package:flutter_app_test/utils/format.dart";
+import 'package:scale_app/ui/user/create_user_viewmodel.dart';
+import "package:scale_app/utils/format.dart";
 
 import 'package:flutter/material.dart';
-import 'package:flutter_app_test/utils/result.dart';
+import 'package:scale_app/utils/result.dart';
 import 'package:flutter_command/flutter_command.dart';
 import 'package:go_router/go_router.dart';
 

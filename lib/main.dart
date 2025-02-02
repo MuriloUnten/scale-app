@@ -1,6 +1,6 @@
-import 'package:flutter_app_test/config/dependencies.dart';
-import 'package:flutter_app_test/ui/home/home_screen.dart';
-import 'package:flutter_app_test/routing/router.dart';
+import 'package:scale_app/config/dependencies.dart';
+import 'package:scale_app/ui/home/home_screen.dart';
+import 'package:scale_app/routing/router.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

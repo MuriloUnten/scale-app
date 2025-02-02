@@ -1,8 +1,8 @@
-import "package:flutter_app_test/domain/bia.dart";
-import "package:flutter_app_test/data/services/models/bia_sqlite_model.dart";
-import "package:flutter_app_test/data/services/tables.dart";
-import "package:flutter_app_test/data/services/sqlite_storage.dart";
-import "package:flutter_app_test/utils/result.dart";
+import "package:scale_app/domain/bia.dart";
+import "package:scale_app/data/services/models/bia_sqlite_model.dart";
+import "package:scale_app/data/services/tables.dart";
+import "package:scale_app/data/services/sqlite_storage.dart";
+import "package:scale_app/utils/result.dart";
 
 class BiaRepository {
     BiaRepository({

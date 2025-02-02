@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:flutter_app_test/domain/bia.dart";
+import "package:scale_app/domain/bia.dart";
 
 class BiaCard extends StatelessWidget {
     const BiaCard({

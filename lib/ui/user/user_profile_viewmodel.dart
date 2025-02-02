@@ -1,8 +1,8 @@
-import 'package:flutter_app_test/domain/user.dart';
-import 'package:flutter_app_test/data/repositories/user_repository.dart';
+import 'package:scale_app/domain/user.dart';
+import 'package:scale_app/data/repositories/user_repository.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_app_test/utils/result.dart';
+import 'package:scale_app/utils/result.dart';
 import 'package:flutter_command/flutter_command.dart';
 
 class UserProfileViewmodel extends ChangeNotifier {

@@ -1,5 +1,5 @@
-import 'package:flutter_app_test/data/services/tables.dart';
-import 'package:flutter_app_test/utils/format.dart';
+import 'package:scale_app/data/services/tables.dart';
+import 'package:scale_app/utils/format.dart';
 
 class Bia {
     int? id;

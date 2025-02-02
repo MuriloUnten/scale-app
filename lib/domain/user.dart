@@ -1,5 +1,5 @@
 import "./sex.dart";
-import "package:flutter_app_test/data/services/tables.dart";
+import "package:scale_app/data/services/tables.dart";
 
 class User {
     int? id;

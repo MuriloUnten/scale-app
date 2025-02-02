@@ -1,5 +1,5 @@
 import "./bia_card.dart";
-import "package:flutter_app_test/domain/bia.dart";
+import "package:scale_app/domain/bia.dart";
 
 import "package:flutter/material.dart";
 
