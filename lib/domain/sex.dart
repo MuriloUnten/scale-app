@@ -19,7 +19,11 @@ extension SexUtil on Sex {
         switch (string) {
             case "M":
                 return Sex.M;
+            case "Male":
+                return Sex.M;
             case "F":
+                return Sex.F;
+            case "Female":
                 return Sex.F;
             default:
                 return Sex.undefined;

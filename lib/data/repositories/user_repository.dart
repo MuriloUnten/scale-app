@@ -16,6 +16,7 @@ class UserRepository {
         var result = await _storage.createUser(_userToDataModel(user));
         switch (result) {
             case Ok(): {
+                await _storage.updateCurrentUser(result.value.id!);
                 return Result.ok(_dataModelToUser(result.value));
             }
             case Error(): {

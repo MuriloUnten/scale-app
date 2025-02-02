@@ -10,6 +10,7 @@ class User {
     DateTime dateOfBirth;
 
     String get fullName => "$firstName $lastName";
+    int get age => (DateTime.now().difference(dateOfBirth).inDays / 365).toInt();
 
 
     User({

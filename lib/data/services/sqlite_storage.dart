@@ -227,6 +227,22 @@ class SQLiteStorage {
         }
     }
 
+    Future<Result<void>> updateCurrentUser(int id) async {
+        final db = await database;
+        
+        try {
+            await db.delete(currentUserTable.table);
+            await db.insert(
+                currentUserTable.table,
+                { currentUserTable.userId: id },
+            );
+            return Result.ok(null);
+        }
+        on Exception catch (e) {
+            return Result.error(e);
+        }
+    }
+
     Future<Result<void>> deleteUser(int id) async {
         final db = await database;
         
@@ -362,5 +378,6 @@ class SQLiteStorage {
             return Result.error(e);
         }
     }
+
     /* ------------------------------------- */
 }

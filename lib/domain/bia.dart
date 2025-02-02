@@ -1,4 +1,5 @@
 import 'package:flutter_app_test/data/services/tables.dart';
+import 'package:flutter_app_test/utils/format.dart';
 
 class Bia {
     int? id;
@@ -10,6 +11,8 @@ class Bia {
     double waterMass;
 
     double get bodyFatRatio => fatMass / weight;
+    int get bodyFatPercentage => (bodyFatRatio * 100).toInt();
+    String get formattedTimestamp => formatDate(timestamp);
 
     Bia({
         this.id,
