@@ -1,5 +1,5 @@
 # UI
-- [ ] Check out how to do Commands
+- [x] Check out how to do Commands
 
 ## Screens
 - [ ] Home Page

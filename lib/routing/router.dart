@@ -3,6 +3,8 @@ import "package:scale_app/ui/home/home_screen.dart";
 import "package:scale_app/ui/home/home_viewmodel.dart";
 import "package:scale_app/ui/user/create_user_screen.dart";
 import "package:scale_app/ui/user/create_user_viewmodel.dart";
+import "package:scale_app/ui/user/select_user_screen.dart";
+import "package:scale_app/ui/user/select_user_viewmodel.dart";
 import "package:scale_app/ui/user/user_profile_screen.dart";
 import "package:scale_app/ui/user/user_profile_viewmodel.dart";
 import "package:scale_app/utils/result.dart";
@@ -30,7 +32,15 @@ GoRouter router() => GoRouter(
             path: "/create-user",
             builder: (context, state) {
                 final viewModel = CreateUserViewmodel(userRepository: context.read());
-                return CreateUser(viewModel: viewModel);
+                return CreateUserScreen(viewModel: viewModel);
+            }
+        ),
+        GoRoute(
+            name: "selectUser",
+            path: "/select-user",
+            builder: (context, state) {
+                final viewModel = SelectUserViewmodel(userRepository: context.read());
+                return SelectUserScreen(viewModel: viewModel);
             }
         ),
         GoRoute(
@@ -41,15 +51,14 @@ GoRouter router() => GoRouter(
                 return UserProfileScreen(viewModel: viewModel);
             },
         ),
-
     ],
     redirect: (context, state) async {
         final loggedIn = await context.read<UserRepository>().getCurrentUser();
         if (loggedIn is Error) {
-            return "/create-user";
+            return "/select-user";
         }
 
-        final loggingIn = state.matchedLocation == "/create-user";
+        final loggingIn = state.matchedLocation == "/create-user" || state.matchedLocation == "/select-user";
         if (loggingIn) {
             return "/";
         }

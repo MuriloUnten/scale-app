@@ -6,8 +6,8 @@ import 'package:scale_app/utils/result.dart';
 import 'package:flutter_command/flutter_command.dart';
 import 'package:go_router/go_router.dart';
 
-class CreateUser extends StatefulWidget {
-    const CreateUser({
+class CreateUserScreen extends StatefulWidget {
+    const CreateUserScreen({
         super.key,
         required this.viewModel,
     });
@@ -15,10 +15,10 @@ class CreateUser extends StatefulWidget {
     final CreateUserViewmodel viewModel;
 
     @override
-    State<CreateUser> createState() => _CreateUserState();
+    State<CreateUserScreen> createState() => _CreateUserState();
 }
 
-class _CreateUserState extends State<CreateUser> {
+class _CreateUserState extends State<CreateUserScreen> {
     final _formKey = GlobalKey<FormState>();
     final _firstNameController = TextEditingController();
     final _lastNameController = TextEditingController();

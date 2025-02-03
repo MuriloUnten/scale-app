@@ -85,6 +85,12 @@ class UserRepository {
         }
     }
 
+    Future<Result<void>> updateCurrentUser(int id) async {
+        var result = await _storage.updateCurrentUser(id);
+
+        return result;
+    }
+
     Future<Result<void>> deleteUser(int id) async {
         var result = await _storage.deleteUser(id);
 
