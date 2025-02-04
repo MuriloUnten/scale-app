@@ -40,7 +40,8 @@ class _SelectUserScreenState extends State<SelectUserScreen> {
                 title: Text(
                     "Select User",
                     style: Theme.of(context).textTheme.titleLarge,
-                )
+                ),
+                centerTitle: true,
             ),
             body: CommandBuilder(
                 command: widget.viewModel.getUsers,

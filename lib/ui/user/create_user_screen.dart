@@ -39,7 +39,10 @@ class _CreateUserState extends State<CreateUserScreen> {
     @override
     Widget build(BuildContext context) {
         return Scaffold(
-            appBar: AppBar(title: Text('Create User')),
+            appBar: AppBar(
+                title: Text('Create User'),
+                centerTitle: true,
+            ),
             body: Padding(
                 padding: const EdgeInsets.all(20),
                 child: Form(
