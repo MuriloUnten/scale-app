@@ -85,6 +85,12 @@ class UserRepository {
         }
     }
 
+    Future<Result<void>> updateCurrentUser(int id) async {
+        var result = await _storage.updateCurrentUser(id);
+
+        return result;
+    }
+
     Future<Result<void>> deleteUser(int id) async {
         var result = await _storage.deleteUser(id);
 
@@ -96,6 +102,10 @@ class UserRepository {
                 return Result.error(Exception("Failed to delete user with id = $id"));
             }
         }
+    }
+
+    Future<Result<void>> logout() async {
+        return await _storage.logout();
     }
 
     UserSQLiteModel _userToDataModel(User user) {

@@ -50,28 +50,66 @@ class _UserProfileState extends State<UserProfileScreen> {
                 centerTitle: true,
             ),
             body: SafeArea(
-                child: CommandBuilder<void, Result<User>>(
-                    command: widget.viewModel.load,
-                    whileExecuting: (context, _, __) => Center(
-                        child: SizedBox (
-                            width: 50.0,
-                            height: 50.0,
-                            child: CircularProgressIndicator(),
-                        ),
-                    ),
-                    onError: (context, error, _, __) => Column(
+                child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        spacing: 20,
                         children: [
-                            Text('An Error has occurred!'),
-                            Text(error.toString()),
+                            CommandBuilder<void, Result<User>>(
+                                command: widget.viewModel.load,
+                                whileExecuting: (context, _, __) => Center(
+                                    child: SizedBox (
+                                        width: 50.0,
+                                        height: 50.0,
+                                        child: CircularProgressIndicator(),
+                                    ),
+                                ),
+                                onError: (context, error, _, __) => Column(
+                                    children: [
+                                        Text('An Error has occurred!'),
+                                        Text(error.toString()),
+                                    ],
+                                ),
+                                onData: (context, data, _) {
+                                    if (data is Error) {
+                                        context.goNamed("createUser");
+                                    }
+
+                                    return UserCard(user: widget.viewModel.user!);
+                                },
+                            ),
+                            MaterialButton(
+                                padding: EdgeInsets.all(15),
+                                color: Colors.red,
+                                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                onPressed: () async {
+                                    widget.viewModel.logout();
+                                    widget.viewModel.logout.listen((result, _) {
+                                        switch (result) {
+                                            case Ok(): {
+                                                context.goNamed("home");
+                                            }
+                                            case Error(): {
+                                                ScaffoldMessenger.of(context).showSnackBar(
+                                                    SnackBar(content: Text('Failed to Logout. Error: ${result.error}')),
+                                                );
+                                            }
+                                        }
+                                    });
+                                },
+                                child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                        Icon(Icons.logout),
+                                        SizedBox(width: 10),
+                                        Text("Logout"),
+                                    ],
+                                ),
+                            ),
                         ],
                     ),
-                    onData: (context, data, _) {
-                        if (data is Error) {
-                            context.goNamed("createUser");
-                        }
-
-                        return UserCard(user: widget.viewModel.user!);
-                    },
                 ),
             ),
             floatingActionButton: FloatingActionButton.extended(

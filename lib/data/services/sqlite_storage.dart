@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:scale_app/data/services/models/user_sqlite_model.dart';
 import 'package:scale_app/data/services/models/bia_sqlite_model.dart';
 import 'package:scale_app/data/services/tables.dart';
@@ -177,6 +176,7 @@ class SQLiteStorage {
             var result = await db.query(
                 userTable.table,
                 columns: [
+                    userTable.id,
                     userTable.firstName,
                     userTable.lastName,
                     userTable.height,
@@ -251,6 +251,21 @@ class SQLiteStorage {
                 userTable.table,
                 where: "${userTable.id} = ?",
                 whereArgs: [ id ],
+            );
+
+            return Result.ok(null);
+        }
+        on Exception catch (e) {
+            return Result.error(e);
+        }
+    }
+
+    Future<Result<void>> logout() async {
+        final db = await database;
+
+        try {
+            await db.delete(
+                currentUserTable.table,
             );
 
             return Result.ok(null);
