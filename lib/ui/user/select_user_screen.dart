@@ -140,6 +140,15 @@ class _SelectUserScreenState extends State<SelectUserScreen> {
                     );
                 }
             ),
+            floatingActionButton: FloatingActionButton.extended(
+                shape: RoundedRectangleBorder(
+                    borderRadius:BorderRadius.all(Radius.circular(20)),
+                ),
+                onPressed: () => context.goNamed("createUser"),
+                icon: Icon(Icons.add),
+                label: Text("New User"),
+                elevation: 10,
+            ),
         );
     }
 }
