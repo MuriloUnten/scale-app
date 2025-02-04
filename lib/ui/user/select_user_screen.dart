@@ -64,7 +64,7 @@ class _SelectUserScreenState extends State<SelectUserScreen> {
                             context.goNamed("createUser");
                         }
                         case Ok(): {
-                            if (data.value.isEmpty) {
+                            if (widget.viewModel.users.isEmpty) {
                                 context.goNamed("createUser");
                             }
                         }

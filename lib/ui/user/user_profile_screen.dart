@@ -84,8 +84,20 @@ class _UserProfileState extends State<UserProfileScreen> {
                                 padding: EdgeInsets.all(15),
                                 color: Colors.red,
                                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                                onPressed: () {
-
+                                onPressed: () async {
+                                    widget.viewModel.logout();
+                                    widget.viewModel.logout.listen((result, _) {
+                                        switch (result) {
+                                            case Ok(): {
+                                                context.goNamed("home");
+                                            }
+                                            case Error(): {
+                                                ScaffoldMessenger.of(context).showSnackBar(
+                                                    SnackBar(content: Text('Failed to Logout. Error: ${result.error}')),
+                                                );
+                                            }
+                                        }
+                                    });
                                 },
                                 child: Row(
                                     mainAxisSize: MainAxisSize.min,

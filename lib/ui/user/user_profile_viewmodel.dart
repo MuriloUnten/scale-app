@@ -10,9 +10,11 @@ class UserProfileViewmodel extends ChangeNotifier {
         required UserRepository userRepository,
     }) : _userRepository = userRepository {
         load = Command.createAsyncNoParam(_load, initialValue: Result.error(Exception("loading")))..execute();
+        logout = Command.createAsyncNoParam(_logout, initialValue: Result.error(Exception("loading")));
     }
 
     late Command<void, Result<User>> load;
+    late Command<void, Result<void>> logout;
 
     User? _user;
     User? get user => _user;
@@ -29,5 +31,9 @@ class UserProfileViewmodel extends ChangeNotifier {
             }
         }
         return result;
+    }
+
+    Future<Result<void>> _logout() async {
+        return await _userRepository.logout();
     }
 }

@@ -9,12 +9,16 @@ import "package:scale_app/ui/user/user_profile_screen.dart";
 import "package:scale_app/ui/user/user_profile_viewmodel.dart";
 import "package:scale_app/utils/result.dart";
 
+import "package:flutter/material.dart";
 import "package:go_router/go_router.dart";
 import 'package:provider/provider.dart';
+
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 GoRouter router() => GoRouter(
     initialLocation: "/",
     debugLogDiagnostics: true,
+    navigatorKey: navigatorKey,
     routes: [
         GoRoute(
             name: "home",
@@ -53,14 +57,14 @@ GoRouter router() => GoRouter(
         ),
     ],
     redirect: (context, state) async {
+        final loggingIn = state.matchedLocation == "/create-user" || state.matchedLocation == "/select-user";
+        if (loggingIn) {
+            return null;
+        }
+
         final loggedIn = await context.read<UserRepository>().getCurrentUser();
         if (loggedIn is Error) {
             return "/select-user";
-        }
-
-        final loggingIn = state.matchedLocation == "/create-user" || state.matchedLocation == "/select-user";
-        if (loggingIn) {
-            return "/";
         }
 
         return null;

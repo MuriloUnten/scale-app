@@ -260,6 +260,21 @@ class SQLiteStorage {
         }
     }
 
+    Future<Result<void>> logout() async {
+        final db = await database;
+
+        try {
+            await db.delete(
+                currentUserTable.table,
+            );
+
+            return Result.ok(null);
+        }
+        on Exception catch (e) {
+            return Result.error(e);
+        }
+    }
+
     Future<Result<BiaSQLiteModel>> createBia(BiaSQLiteModel bia) async {
         final db = await database;
 

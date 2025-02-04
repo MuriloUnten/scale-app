@@ -104,6 +104,10 @@ class UserRepository {
         }
     }
 
+    Future<Result<void>> logout() async {
+        return await _storage.logout();
+    }
+
     UserSQLiteModel _userToDataModel(User user) {
         return UserSQLiteModel.fromMap({
             userTable.id: user.id,
