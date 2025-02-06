@@ -6,9 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import "package:provider/provider.dart";
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'dart:io';
 
-void main() {
+void main() async {
     if (Platform.isLinux || Platform.isMacOS || Platform.isWindows) {
         if (Platform.isWindows) {
             print("Why are You still using Windows?");
@@ -17,6 +18,13 @@ void main() {
         sqfliteFfiInit();
         databaseFactory = databaseFactoryFfi;
     }
+
+    FlutterBluePlus.setLogLevel(LogLevel.verbose);
+    if (await FlutterBluePlus.isSupported == false) {
+        print("Bluetooth not supported by this device");
+        return;
+    }
+
     runApp(
         MultiProvider(
             providers: providers,

@@ -91,6 +91,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                 ),
                                 BiasList(bias: widget.viewModel.recentBias),
+                                MaterialButton(
+                                    child: Center(
+                                        child: Row(
+                                            children: [
+                                                Icon(Icons.bluetooth),
+                                                Text("Bluetooth"),
+                                            ],
+                                        ),
+                                    ),
+                                    onPressed: () => context.goNamed("ble"),
+                                ),
                             ],
                         );
                     },
