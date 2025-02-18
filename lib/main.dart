@@ -1,9 +1,8 @@
+import 'package:flutter_command/flutter_command.dart';
 import 'package:scale_app/config/dependencies.dart';
-import 'package:scale_app/ui/home/home_screen.dart';
 import 'package:scale_app/routing/router.dart';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import "package:provider/provider.dart";
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
@@ -25,6 +24,19 @@ void main() async {
         return;
     }
 
+    Command.globalExceptionHandler = (commandError, stackTrace) {
+        print("__________________________________________");
+        print("ERROR");
+        print("Command ${commandError.commandName} failed with error ${commandError.error.toString()}");
+        print("STACKTRACE");
+        print(stackTrace.toString());
+        print("__________________________________________");
+    };
+
+    Command.loggingHandler = (commandName, result) {
+        print("EXECUTING COMMAND: $commandName");
+    };
+
     runApp(
         MultiProvider(
             providers: providers,
@@ -39,12 +51,6 @@ class MyApp extends StatelessWidget {
     @override
     Widget build(BuildContext context) {
         return MaterialApp.router(
-            // localizationsDelegates: [
-            //     GlobalWidgetsLocalizations.delegate,
-            //     GlobalMaterialLocalizations.delegate,
-            //     AppLocalizationDelegate(),
-            // ],
-            // scrollBehavior: AppCustomScrollBehavior(),
             darkTheme: ThemeData(
                 useMaterial3: true,
                 colorScheme: ColorScheme.fromSeed(

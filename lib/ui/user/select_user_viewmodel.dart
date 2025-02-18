@@ -12,11 +12,13 @@ class SelectUserViewmodel extends ChangeNotifier {
     _userRepository = userRepository {
         getUsers = Command.createAsyncNoParam<Result<List<User>>>(
             _getUsers,
+            debugName: "GetUsers",
             initialValue: Result.error(Exception("loading")),
         )..execute();
 
         chooseUser = Command.createAsync<int, Result<void>>(
             _chooseUser,
+            debugName: "ChooseUser",
             initialValue: Result.error(Exception("loading")),
         );
     }

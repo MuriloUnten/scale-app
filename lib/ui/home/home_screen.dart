@@ -1,4 +1,6 @@
-import 'package:scale_app/domain/bia.dart';
+import 'package:provider/provider.dart';
+import 'package:scale_app/ui/bluetooth/bluetooth_status.dart';
+import 'package:scale_app/ui/bluetooth/bluetooth_viewmodel.dart';
 import 'package:scale_app/ui/home/home_viewmodel.dart';
 import 'package:scale_app/utils/result.dart';
 import "package:scale_app/ui/bias/bias_list.dart";
@@ -44,6 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     style: Theme.of(context).textTheme.titleLarge,
                 ),
                 centerTitle: true,
+                bottom: BluetoothStatus(viewModel: BluetoothViewmodel(bleRepository: context.read())),
                 actions: [
                     IconButton(
                         onPressed: () => context.goNamed("user"),
@@ -100,7 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             ],
                                         ),
                                     ),
-                                    onPressed: () => context.goNamed("ble"),
+                                    onPressed: () => context.pushNamed("ble"),
                                 ),
                             ],
                         );
@@ -111,7 +114,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 shape: RoundedRectangleBorder(
                     borderRadius:BorderRadius.all(Radius.circular(20)),
                 ),
-                onPressed: () => context.goNamed("createBia"),
+                onPressed: () {
+                    if (!widget.viewModel.btConnected) {
+                        context.pushNamed("ble");
+                    } else {
+                        context.goNamed("measure");
+                    }
+                } ,
                 icon: Icon(Icons.add),
                 label: Text("Measure"),
                 elevation: 10,

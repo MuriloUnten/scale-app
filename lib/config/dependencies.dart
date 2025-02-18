@@ -1,5 +1,6 @@
 import "package:provider/provider.dart";
 import "package:provider/single_child_widget.dart";
+import "package:scale_app/data/repositories/ble_repository.dart";
 import "package:scale_app/data/services/ble_service.dart";
 
 import "../data/services/sqlite_storage.dart";
@@ -13,6 +14,11 @@ List<SingleChildWidget> get providers {
         ),
         Provider(
             create: (context) => BLEService(),
+        ),
+        Provider(
+            create: (context) => BLERepository(
+                bleService: context.read()
+            ),
         ),
         Provider(
             create: (context) => UserRepository(

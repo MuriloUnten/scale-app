@@ -14,6 +14,7 @@ class CreateUserViewmodel extends ChangeNotifier {
     _userRepository = userRepository {
         createUser = Command.createAsync<(String, String, String, String, String), Result<User>>(
             _createUser,
+            debugName: "CreateUser",
             initialValue: Result.error(Exception("loading")),
         );
     }

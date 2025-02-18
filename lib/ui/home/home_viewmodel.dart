@@ -1,6 +1,7 @@
 import 'dart:collection';
 
 import 'package:scale_app/data/repositories/bia_repository.dart';
+import 'package:scale_app/data/repositories/ble_repository.dart';
 import 'package:scale_app/data/repositories/user_repository.dart';
 import 'package:scale_app/domain/bia.dart';
 import 'package:scale_app/domain/user.dart';
@@ -13,16 +14,23 @@ class HomeViewmodel extends ChangeNotifier {
     HomeViewmodel({
         required UserRepository userRepository,
         required BiaRepository biaRepository,
+        required BLERepository bleRepository,
     }) :
     _userRepository = userRepository,
-    _biaRepository = biaRepository {
-        load = Command.createAsyncNoParam<Result<void>>(_load, initialValue: Result.error(Exception("loading")))..execute();
+    _biaRepository = biaRepository,
+    _bleRepository = bleRepository {
+        load = Command.createAsyncNoParam<Result<void>>(
+            _load,
+            debugName: "LoadHome",
+            initialValue: Result.error(Exception("loading"),
+        ))..execute();
     }
 
     late Command<void, Result<void>> load;
     
     final UserRepository _userRepository;
     final BiaRepository _biaRepository;
+    final BLERepository _bleRepository;
 
     User? _user;
     User? get user => _user;
@@ -30,10 +38,9 @@ class HomeViewmodel extends ChangeNotifier {
     List<Bia> _recentBias = [];
     UnmodifiableListView<Bia> get recentBias => UnmodifiableListView(_recentBias.take(3));
 
+    bool get btConnected => _bleRepository.connected;
+
     Future<Result<void>> _load() async {
-        print("insinde _load");
-        var time = DateTime.now();
-        print("Time now ${time.toString()}");
         var userResult = await _userRepository.getCurrentUser();
         switch (userResult) {
             case Error(): {
@@ -44,7 +51,6 @@ class HomeViewmodel extends ChangeNotifier {
                 _user = userResult.value;
             }
         }
-        print("after user");
 
         var biasResult = await _biaRepository.getBias();
         switch (biasResult) {
@@ -55,7 +61,6 @@ class HomeViewmodel extends ChangeNotifier {
                 _recentBias = biasResult.value;
             }
         }
-        print("after bias");
 
         return Result.ok(null);
     }

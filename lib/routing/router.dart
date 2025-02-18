@@ -1,6 +1,8 @@
 import "package:scale_app/data/repositories/user_repository.dart";
-import "package:scale_app/data/services/ble_service.dart";
-import "package:scale_app/ui/ble_test.dart";
+import "package:scale_app/ui/bias/create_bia_screen.dart";
+import "package:scale_app/ui/bias/create_bia_viewmodel.dart";
+import "package:scale_app/ui/bluetooth/bluetooth_devices_screen.dart";
+import "package:scale_app/ui/bluetooth/bluetooth_viewmodel.dart";
 import "package:scale_app/ui/home/home_screen.dart";
 import "package:scale_app/ui/home/home_viewmodel.dart";
 import "package:scale_app/ui/user/create_user_screen.dart";
@@ -29,6 +31,7 @@ GoRouter router() => GoRouter(
                 final viewmodel = HomeViewmodel(
                     userRepository: context.read(),
                     biaRepository: context.read(),
+                    bleRepository: context.read(),
                 );
                 return HomeScreen(viewModel: viewmodel);
             },
@@ -58,11 +61,23 @@ GoRouter router() => GoRouter(
             },
         ),
         GoRoute(
+            name: "measure",
+            path: "/measure",
+            builder: (context, state) {
+                final viewModel = CreateBiaViewmodel(
+                    bleRepository: context.read(),
+                    biaRepository: context.read(),
+                    userRepository: context.read(),
+                );
+                return CreateBiaScreen(viewModel: viewModel);
+            },
+        ),
+        GoRoute(
             name: "ble",
             path: "/ble-test",
             builder: (context, state) {
-                final BLEService bleService = context.read();
-                return BLETest(bleService: bleService);
+                final viewModel = BluetoothViewmodel(bleRepository: context.read());
+                return BluetoothDevicesScreen(viewModel: viewModel);
             },
         ),
     ],

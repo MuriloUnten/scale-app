@@ -27,7 +27,6 @@ class BiasList extends StatelessWidget {
         }
 
         return Container(
-            padding: EdgeInsets.symmetric(horizontal: 20),
             child: Center(
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,

@@ -1,10 +1,8 @@
-import 'package:scale_app/domain/sex.dart';
 import 'package:scale_app/domain/user.dart';
 import 'package:scale_app/ui/user/user_card.dart';
 import 'package:scale_app/ui/user/user_profile_viewmodel.dart';
 
 import 'package:flutter/material.dart';
-import 'package:scale_app/utils/format.dart';
 import 'package:scale_app/utils/result.dart';
 import 'package:flutter_command/flutter_command.dart';
 import 'package:go_router/go_router.dart';

@@ -93,7 +93,6 @@ class SQLiteStorage {
                     currentUserTable.userId,
                 ]
             );
-            print("result: $result");
             var resultMap = result.singleOrNull;
             if (resultMap == null) {
                 return Result.error(Exception("No current user"));
@@ -107,7 +106,6 @@ class SQLiteStorage {
     }
 
     Future<Result<UserSQLiteModel>> getCurrentUser() async {
-        print("inside getCurrentUser()");
         final db = await database;
 
         try {
