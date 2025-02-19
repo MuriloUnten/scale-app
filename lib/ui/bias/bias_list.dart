@@ -30,7 +30,6 @@ class BiasList extends StatelessWidget {
             child: Center(
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    spacing: 8,
                     children: [
                         ListView.builder(
                             itemCount: bias.length,

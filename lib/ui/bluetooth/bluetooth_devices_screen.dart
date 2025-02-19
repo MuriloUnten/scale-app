@@ -28,7 +28,7 @@ class _BluetoothDevicesScreen extends State<BluetoothDevicesScreen> {
         return Scaffold(
             appBar: AppBar(
                 leading: BackButton(onPressed: () => context.pop(true)),
-                title: Text("Bluetooth test"),
+                title: Text("Bluetooth Devices"),
                 centerTitle: true,
             ),
             body: Center(
@@ -37,6 +37,11 @@ class _BluetoothDevicesScreen extends State<BluetoothDevicesScreen> {
                     child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
+                            Text(
+                                "Select the correct device to connect to",
+                                style: Theme.of(context).textTheme.titleMedium,
+                            ),
+                            SizedBox(height: 15),
                             Expanded(
                                 child: CommandBuilder<void, List<ScanResult>> (
                                     command: widget.viewModel.scanCommand..execute(),

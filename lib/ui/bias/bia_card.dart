@@ -23,7 +23,7 @@ class BiaCard extends StatelessWidget {
 
     Widget _biaCard(BuildContext context) {
         return Card(
-            margin: EdgeInsets.all(20),
+            margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
             elevation: 10,
             color: Theme.of(context).colorScheme.surfaceContainerLowest,
             child: Container(
@@ -66,7 +66,7 @@ class BiaCard extends StatelessWidget {
 
     Widget _detailedBiaCard(BuildContext context) {
         return Card(
-            margin: EdgeInsets.all(20),
+            margin: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
             elevation: 10,
             color: Theme.of(context).colorScheme.surfaceContainerLowest,
             child: Container(

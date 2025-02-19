@@ -1,4 +1,5 @@
 import 'package:flutter_command/flutter_command.dart';
+import 'package:go_router/go_router.dart';
 import 'package:scale_app/ui/bluetooth/bluetooth_viewmodel.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,7 @@ class BluetoothStatus extends StatefulWidget implements PreferredSizeWidget {
     State<BluetoothStatus> createState() => _BluetoothStatusState();
 
   @override
-  Size get preferredSize => Size.fromHeight(25);
+  Size get preferredSize => Size.fromHeight(20);
 }
 
 
@@ -35,6 +36,7 @@ class _BluetoothStatusState extends State<BluetoothStatus> {
                         child: Card(
                             color: Theme.of(context).colorScheme.surfaceContainerLow,
                             shape: LinearBorder(),
+                            elevation: 0,
                             child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
@@ -48,16 +50,20 @@ class _BluetoothStatusState extends State<BluetoothStatus> {
                 } else {
                     return PreferredSize(
                         preferredSize: widget.preferredSize,
-                        child: Card(
-                            color: Theme.of(context).colorScheme.surfaceContainerLow,
-                            shape: LinearBorder(),
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                    Icon(Icons.bluetooth_disabled),
-                                    SizedBox(width: 8),
-                                    Text("Not connected"),
-                                ],
+                        child: InkWell(
+                            onTap: () => context.pushNamed("devices"),
+                            child: Card(
+                                color: Theme.of(context).colorScheme.surfaceContainerLow,
+                                shape: LinearBorder(),
+                                elevation: 0,
+                                child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                        Icon(Icons.bluetooth_disabled),
+                                        SizedBox(width: 8),
+                                        Text("Not connected"),
+                                    ],
+                                ),
                             ),
                         ),
                     );

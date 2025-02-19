@@ -6,18 +6,18 @@
 
     ### When Logged In
     - [ ] Show bia history
-    - [ ] Show Create Bia Button
-    - [ ] Show BLE Connect Button || Status of connected
+    - [x] Show Create Bia Button
+    - [x] Show BLE Connect Button || Status of connected
 
     ### When Logged Out
-    - [ ] When has other users show users to choose from or create new user
-    - [ ] When no other users redirect to CreateUser screen
+    - [x] When has other users show users to choose from or create new user
+    - [x] When no other users redirect to CreateUser screen
 
 - [ ] User Profile
-    - [ ] Display User data
+    - [x] Display User data
     - [ ] Display Edit User Button
     - [ ] Display Delete User Button
-    - [ ] Have the ability to edit `User data in place
+    - [ ] Have the ability to edit User data in place
 
 
 - [ ] Create Bia
@@ -30,7 +30,7 @@
     - [ ] Display a graph of User progress generated from the registered bias
 
 # Data
-- [ ] Implement BLE functionality
+- [x] Implement BLE functionality
 
 ## Services
 - [x] Implement stuff using Result
@@ -41,16 +41,16 @@
 - [x] DeleteUser(id)
 - [x] UpdateUser(id)
 
-- [ ] GetBia(id)
-- [ ] CreateBia()
-- [ ] GetBias()
-- [ ] deleteBia(id)
+- [x] GetBia(id)
+- [x] CreateBia()
+- [x] GetBias()
+- [x] deleteBia(id)
 
 ## Repositories
 
 ### User Repository
-- [ ] Model User data from Database to Domain and vice versa
+- [x] Model User data from Database to Domain and vice versa
 
 ### Bia Repository
-- [ ] Model Bia data from Database to Domain and vice versa
+- [x] Model Bia data from Database to Domain and vice versa
 - [?] Generate Graph data from Bias

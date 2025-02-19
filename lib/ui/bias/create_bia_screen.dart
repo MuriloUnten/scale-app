@@ -37,11 +37,8 @@ class _CreateBiaScreen extends State<CreateBiaScreen > {
             ),
             body: Center(
                 child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                        MaterialButton(
-                            onPressed: () => widget.viewModel.measureCommand.execute(),
-                            child: Text("read"),
-                        ),
                         CommandBuilder(
                             command: widget.viewModel.measureCommand,
                             whileExecuting: (context, _, __) {
@@ -62,12 +59,75 @@ class _CreateBiaScreen extends State<CreateBiaScreen > {
                             onData: (context, result, _) {
                                 return Center(
                                     child: Column(
+                                        spacing: 12,
                                         mainAxisSize: MainAxisSize.min,
                                         children: [
                                             BiaCard(bia: widget.viewModel.bia!, detailed: true),
-                                            MaterialButton(
-                                                onPressed: () => widget.viewModel.saveBiaCommand.execute(),
-                                            ),
+                                            Row(
+                                                mainAxisAlignment: MainAxisAlignment.end,
+                                                spacing: 12,
+                                                children: [
+                                                    MaterialButton(
+                                                        minWidth: 150,
+                                                        height: 50,
+                                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                                        color: Colors.red,
+                                                        onPressed: () {
+                                                            widget.viewModel.clearMeasurement();
+                                                            return;
+                                                        },
+                                                        child: Row(
+                                                            spacing: 10,
+                                                            mainAxisAlignment: MainAxisAlignment.start,
+                                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                                            children: [
+                                                                Icon(
+                                                                    Icons.delete,
+                                                                    size: 25,
+                                                                ),
+                                                                Text(
+                                                                    "Delete",
+                                                                    style: TextStyle(
+                                                                        fontSize: 20,
+                                                                        fontWeight: FontWeight.w500,
+                                                                        color: Colors.white,
+                                                                    )
+                                                                ),
+                                                            ],
+                                                        )
+                                                    ),
+                                                    MaterialButton(
+                                                        minWidth: 150,
+                                                        height: 50,
+                                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                                                        color: Colors.green,
+                                                        onPressed: () async{
+                                                            widget.viewModel.saveBiaCommand.execute();
+                                                            context.goNamed("home");
+                                                        },
+                                                        child: Row(
+                                                            spacing: 10,
+                                                            mainAxisAlignment: MainAxisAlignment.start,
+                                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                                            children: [
+                                                                Icon(
+                                                                    Icons.save,
+                                                                    size: 25,
+                                                                ),
+                                                                Text(
+                                                                    "Save",
+                                                                    style: TextStyle(
+                                                                        fontSize: 20,
+                                                                        fontWeight: FontWeight.w500,
+                                                                        color: Colors.white,
+                                                                    )
+                                                                ),
+                                                            ],
+                                                        )
+                                                    ),
+                                                    SizedBox(width: 8),
+                                                ],
+                                            )
                                         ],
                                     ),
                                 );
@@ -75,6 +135,12 @@ class _CreateBiaScreen extends State<CreateBiaScreen > {
                         ),
                     ],
                 ),
+            ),
+            floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+            floatingActionButton: FloatingActionButton.extended(
+                onPressed: () => widget.viewModel.measureCommand.execute(),
+                icon: Icon(Icons.graphic_eq),
+                label: Text("Start Measurement"),
             ),
         );
     }

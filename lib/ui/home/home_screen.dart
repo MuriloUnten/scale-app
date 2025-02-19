@@ -77,6 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             spacing: 10,
                             children: [
+                                SizedBox(height: 10),
                                 Container(
                                     padding: EdgeInsets.only(left: 35),
                                     child: Text(
@@ -103,7 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                             ],
                                         ),
                                     ),
-                                    onPressed: () => context.pushNamed("ble"),
+                                    onPressed: () => context.pushNamed("devices"),
                                 ),
                             ],
                         );
@@ -116,9 +117,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 onPressed: () {
                     if (!widget.viewModel.btConnected) {
-                        context.pushNamed("ble");
+                        context.pushNamed("devices");
                     } else {
-                        context.goNamed("measure");
+                        context.pushNamed("measure");
                     }
                 } ,
                 icon: Icon(Icons.add),

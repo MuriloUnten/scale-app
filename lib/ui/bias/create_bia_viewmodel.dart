@@ -81,4 +81,8 @@ class CreateBiaViewmodel extends ChangeNotifier {
             }
         }
     }
+
+    void clearMeasurement() {
+        _measuredBia = null;
+    }
 }

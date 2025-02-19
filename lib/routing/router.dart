@@ -73,8 +73,8 @@ GoRouter router() => GoRouter(
             },
         ),
         GoRoute(
-            name: "ble",
-            path: "/ble-test",
+            name: "devices",
+            path: "/devices",
             builder: (context, state) {
                 final viewModel = BluetoothViewmodel(bleRepository: context.read());
                 return BluetoothDevicesScreen(viewModel: viewModel);
