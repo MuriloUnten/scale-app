@@ -33,7 +33,10 @@ class BLEService {
 
   Future<void> stopScan() async => await FlutterBluePlus.stopScan();
 
-  Future<void> connect(BluetoothDevice device) async => await device.connect();
+  Future<void> connect(BluetoothDevice device) async {
+    await device.connect();
+    await device.discoverServices();
+  }
 
   Future<void> disconnect(BluetoothDevice device) async =>
       await device.disconnect();
