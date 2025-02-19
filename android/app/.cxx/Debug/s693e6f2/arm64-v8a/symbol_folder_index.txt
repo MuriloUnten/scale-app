@@ -1,0 +1,1 @@
+/home/exati/personal/scale-app/build/app/intermediates/cxx/Debug/s693e6f2/obj/arm64-v8a

@@ -1,0 +1,1 @@
+/home/exati/personal/scale-app/build/app/intermediates/cxx/RelWithDebInfo/6em6k4q6/obj/x86

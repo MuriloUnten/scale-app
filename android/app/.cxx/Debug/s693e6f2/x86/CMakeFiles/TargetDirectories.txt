@@ -1,0 +1,2 @@
+/home/exati/personal/scale-app/android/app/.cxx/Debug/s693e6f2/x86/CMakeFiles/edit_cache.dir
+/home/exati/personal/scale-app/android/app/.cxx/Debug/s693e6f2/x86/CMakeFiles/rebuild_cache.dir
